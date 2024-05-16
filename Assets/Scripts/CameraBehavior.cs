@@ -90,7 +90,7 @@ public class CameraBehavior : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(lookRotation.y, lookRotation.x, 0f);
 
         // Calculate desired camera position
-        desiredPosition = target.position - (rotation * Vector3.forward * distanceFromTarget);
+        desiredPosition = target.position + offset - (rotation * Vector3.forward * distanceFromTarget);
 
         // Check for obstacles between camera and target
         Ray ray = new Ray(target.position, desiredPosition - target.position);
@@ -129,6 +129,7 @@ public class CameraBehavior : MonoBehaviour
             case Mode.ThirdPerson:
                 offset = Vector3.zero;
                 distanceFromTarget = 7.5f;
+                offset = new Vector3(0, 1, 0);
                 break;
 
             case Mode.FirstPerson:
