@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -5,15 +6,16 @@ public class Tower : MonoBehaviour
     public Stats stats;
     public Transform player;
 
+    [Serializable]
     public class Stats
     {
-        public string name;
-        public float range;
-        public float reload;
-        public int cost;
-        public int damage;
-        public string effect;
-        public float timer;
+        public string name; // name of the tower
+        public float range; // range from the tower center
+        public float reload; // time it take to reload after shooting
+        public int cost; // amount of gold needed to build this tower
+        public int damage; // amount of damage a bullet does
+        public string effect; // optional effect to inflict on any enemies that are hit
+        public float timer; // time left until shooting again
     }
 
     void Start()

@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
         cam = Camera.main.transform;
         hitbox = GetComponent<Collider>();
         body = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked; // Lock cursor to the center of the screen
 
         stamina = maxStamina;
     }

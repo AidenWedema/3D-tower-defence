@@ -25,6 +25,11 @@ public class CameraBehavior : MonoBehaviour
         TopDown,
     }
 
+    private void Start()
+    {
+        SwitchCameraMode(Mode.ThirdPerson);
+    }
+
     void Update()
     {
         GetInput();
@@ -123,6 +128,7 @@ public class CameraBehavior : MonoBehaviour
     void SwitchCameraMode(Mode newMode)
     {
         smoothing = true;
+        smoothTime = 0;
         mode = newMode;
         switch (mode)
         {
@@ -130,15 +136,18 @@ public class CameraBehavior : MonoBehaviour
                 offset = Vector3.zero;
                 distanceFromTarget = 7.5f;
                 offset = new Vector3(0, 1, 0);
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
 
             case Mode.FirstPerson:
                 offset = new Vector3(0, 0.3f, 0);
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
 
             case Mode.TopDown:
                 offset = new Vector3(0, 20, 0);
                 lookRotation = new Vector2(0, 89);
+                Cursor.lockState = CursorLockMode.None;
                 break;
         }
     }
