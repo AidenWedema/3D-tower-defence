@@ -6,7 +6,8 @@ public class TowerBase : MonoBehaviour
 {
     public Transform player;
     public Transform buildList;
-    public Dictionary<Tower, Transform> towers = new Dictionary<Tower, Transform>();
+    public List<Tower> towers = new List<Tower>();
+    public List<Button> buttons = new List<Button>();
     private Camera cam;
 
     void Start()
@@ -22,7 +23,9 @@ public class TowerBase : MonoBehaviour
             Transform button = Instantiate(Resources.Load<GameObject>("Prefabs/button")).transform;
             button.parent = buildList;
             button.localPosition = i * Vector3.right - prefabs.Length / 2 * Vector3.right;
-            towers.Add(tower, button);
+
+            towers.Add(tower);
+            buttons.Add(button.GetComponent<Button>());
         }
 
         player = GameObject.FindWithTag("Player").transform;
@@ -47,17 +50,28 @@ public class TowerBase : MonoBehaviour
         if (!Input.GetMouseButtonDown(0))
             return;
 
-        // Shoot a ray and return evetytihng it hits. Open the buildlist if the towerbase is hit, otherwise close it. 
+        // Shoot a ray and return everything it hits. Show the buildlist if the towerbase is hit, otherwise hide it. If a button is hit, click it.
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits = Physics.RaycastAll(ray);
         foreach (RaycastHit hit in hits)
         {
-            if (transform != hit.collider.transform)
-                continue;
-
-            buildList.gameObject.SetActive(true);
-            SetBuildableTowers();
-            return;
+            Transform hittransform = hit.collider.transform;
+            Debug.Log(hittransform.name);
+            if (transform == hittransform)
+            {
+                SetBuildableTowers();
+                buildList.gameObject.SetActive(true);
+                return;
+            }
+            if (hittransform.parent == buildList)
+            {
+                int index = buttons.IndexOf(hittransform.GetComponent<Button>());
+                Button button = buttons[index];
+                if (!button.interactable)
+                    return;
+                BuildTower(towers[index]);
+                break;
+            }
         }
         buildList.gameObject.SetActive(false);
     }
@@ -65,9 +79,10 @@ public class TowerBase : MonoBehaviour
     void SetBuildableTowers()
     {
         // Loop through every tower to check if the player has enough gold to build it
-        foreach (Tower tower in towers.Keys)
+        for (int i = 0; i < towers.Count; i++)
         {
-            Button button = towers[tower].GetComponent<Button>();
+            Tower tower = towers[i];
+            Button button = buttons[i];
             if (tower.stats.cost <= GameManager.gold)
             {
                 button.interactable = true;
@@ -80,5 +95,10 @@ public class TowerBase : MonoBehaviour
     void RotateButonsTowardsCamera()
     {
         buildList.rotation = Quaternion.Euler(cam.transform.eulerAngles);
+    }
+
+    public void BuildTower(Tower tower)
+    {
+        Debug.Log($"Building tower {tower.name}");
     }
 }

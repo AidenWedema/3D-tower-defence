@@ -3091,6 +3091,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   buildList: {fileID: 1048607069}
+  towers: []
+  buttons: []
 --- !u!224 &6479157599292948537
 RectTransform:
   m_ObjectHideFlags: 0
