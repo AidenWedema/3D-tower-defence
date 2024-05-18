@@ -145,8 +145,8 @@ public class CameraBehavior : MonoBehaviour
                 break;
 
             case Mode.TopDown:
-                offset = new Vector3(0, 20, 0);
-                lookRotation = new Vector2(0, 89);
+                offset = new Vector3(0, 20, -9);
+                lookRotation = new Vector2(0, 60);
                 Cursor.lockState = CursorLockMode.None;
                 break;
         }

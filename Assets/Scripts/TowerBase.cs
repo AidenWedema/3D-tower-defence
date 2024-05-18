@@ -7,8 +7,9 @@ public class TowerBase : MonoBehaviour
     public Transform player;
     public Transform buildList;
     public List<Tower> towers = new List<Tower>();
-    public List<Button> buttons = new List<Button>();
+    public Dictionary<Image, bool> buttons = new Dictionary<Image, bool>();
     private Camera cam;
+    private CameraBehavior camBehave;
 
     void Start()
     {
@@ -20,17 +21,18 @@ public class TowerBase : MonoBehaviour
         {
             GameObject prefab = prefabs[i];
             Tower tower = prefab.GetComponent<Tower>();
-            Transform button = Instantiate(Resources.Load<GameObject>("Prefabs/button")).transform;
+            Transform button = Instantiate(Resources.Load<GameObject>("Prefabs/TowerButton")).transform;
             button.parent = buildList;
             button.localPosition = i * Vector3.right - prefabs.Length / 2 * Vector3.right;
 
             towers.Add(tower);
-            buttons.Add(button.GetComponent<Button>());
+            buttons.Add(button.GetComponent<Image>(), false);
         }
 
         player = GameObject.FindWithTag("Player").transform;
         gameObject.layer = LayerMask.NameToLayer("Tower");
         cam = Camera.main;
+        camBehave = cam.GetComponent<CameraBehavior>();
 
         buildList.gameObject.SetActive(false);
     }
@@ -52,7 +54,7 @@ public class TowerBase : MonoBehaviour
 
         // Shoot a ray and return everything it hits. Show the buildlist if the towerbase is hit, otherwise hide it. If a button is hit, click it.
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit[] hits = Physics.RaycastAll(ray);
+        RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity);
         foreach (RaycastHit hit in hits)
         {
             Transform hittransform = hit.collider.transform;
@@ -65,9 +67,10 @@ public class TowerBase : MonoBehaviour
             }
             if (hittransform.parent == buildList)
             {
-                int index = buttons.IndexOf(hittransform.GetComponent<Button>());
-                Button button = buttons[index];
-                if (!button.interactable)
+                List<Image> bs = new List<Image>(buttons.Keys);
+                int index = bs.IndexOf(hittransform.GetComponent<Image>());
+                Image button = bs[index];
+                if (!buttons[button])
                     return;
                 BuildTower(towers[index]);
                 break;
@@ -82,13 +85,15 @@ public class TowerBase : MonoBehaviour
         for (int i = 0; i < towers.Count; i++)
         {
             Tower tower = towers[i];
-            Button button = buttons[i];
+            Image button = new List<Image>(buttons.Keys)[i];
             if (tower.stats.cost <= GameManager.gold)
             {
-                button.interactable = true;
+                button.color = Color.white;
+                buttons[button] = true;
                 continue;
             }
-            button.interactable = false;
+            button.color = new Color32(120, 120, 120, 150);
+            buttons[button] = false;
         }
     }
 
