@@ -5,6 +5,7 @@ public class Tower : MonoBehaviour
 {
     public Stats stats;
     public Transform player;
+    public bool active;
 
     [Serializable]
     public class Stats
@@ -25,13 +26,14 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) > 2)
+        if (!active)
             return;
 
-
+        if (Vector3.Distance(transform.position, player.position) > 2)
+            return;
     }
 
-    void Build()
+    public void Build(Transform towerbase)
     {
 
     }

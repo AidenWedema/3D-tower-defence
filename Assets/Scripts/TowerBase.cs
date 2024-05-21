@@ -6,10 +6,9 @@ public class TowerBase : MonoBehaviour
 {
     public Transform player;
     public Transform buildList;
-    public List<Tower> towers = new List<Tower>();
+    public List<GameObject> towers = new List<GameObject>();
     public Dictionary<Image, bool> buttons = new Dictionary<Image, bool>();
     private Camera cam;
-    private CameraBehavior camBehave;
 
     void Start()
     {
@@ -20,19 +19,18 @@ public class TowerBase : MonoBehaviour
         for (int i = 0; i < prefabs.Length; i++)
         {
             GameObject prefab = prefabs[i];
-            Tower tower = prefab.GetComponent<Tower>();
+            //Tower tower = prefab.GetComponent<Tower>();
             Transform button = Instantiate(Resources.Load<GameObject>("Prefabs/TowerButton")).transform;
             button.parent = buildList;
             button.localPosition = i * Vector3.right - prefabs.Length / 2 * Vector3.right;
 
-            towers.Add(tower);
+            towers.Add(prefab);
             buttons.Add(button.GetComponent<Image>(), false);
         }
 
         player = GameObject.FindWithTag("Player").transform;
         gameObject.layer = LayerMask.NameToLayer("Tower");
         cam = Camera.main;
-        camBehave = cam.GetComponent<CameraBehavior>();
 
         buildList.gameObject.SetActive(false);
     }
@@ -84,7 +82,7 @@ public class TowerBase : MonoBehaviour
         // Loop through every tower to check if the player has enough gold to build it
         for (int i = 0; i < towers.Count; i++)
         {
-            Tower tower = towers[i];
+            Tower tower = towers[i].GetComponent<Tower>();
             Image button = new List<Image>(buttons.Keys)[i];
             if (tower.stats.cost <= GameManager.gold)
             {
@@ -102,8 +100,15 @@ public class TowerBase : MonoBehaviour
         buildList.rotation = Quaternion.Euler(cam.transform.eulerAngles);
     }
 
-    public void BuildTower(Tower tower)
+    public void BuildTower(GameObject prefab)
     {
-        Debug.Log($"Building tower {tower.name}");
+        // subtract the cost of the tower from the players gold
+        GameManager.gold -= prefab.GetComponent<Tower>().stats.cost;
+        // clone the tower object and place it on the same position as the tower base
+        Transform tower = Instantiate(prefab).transform;
+        tower.SetPositionAndRotation(transform.position, transform.rotation);
+        // activate the tower and destroy the tower base (this object)
+        tower.GetComponent<Tower>().active = true;
+        Destroy(gameObject);
     }
 }
