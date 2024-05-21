@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
             stamina = Mathf.Min(stamina + Time.deltaTime, maxStamina);
             if (stamina >= maxStamina / 3)
                 noRunningAlowed = false;
-
         }
 
         body.velocity = new Vector3(move.x, body.velocity.y, move.z);

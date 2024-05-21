@@ -84,7 +84,7 @@ public class CameraBehavior : MonoBehaviour
 
         // Look around vertically
         lookRotation.y -= input.y;
-
+        
         lookRotation.y = Mathf.Clamp(lookRotation.y, -89f, 89f); // Clamp vertical rotation to prevent flipping
     }
 
@@ -133,7 +133,6 @@ public class CameraBehavior : MonoBehaviour
         switch (mode)
         {
             case Mode.ThirdPerson:
-                offset = Vector3.zero;
                 distanceFromTarget = 7.5f;
                 offset = new Vector3(0, 1, 0);
                 Cursor.lockState = CursorLockMode.Locked;
