@@ -25,6 +25,11 @@ public class CameraBehavior : MonoBehaviour
         TopDown,
     }
 
+    private void Start()
+    {
+        SwitchCameraMode(Mode.ThirdPerson);
+    }
+
     void Update()
     {
         GetInput();
@@ -79,7 +84,7 @@ public class CameraBehavior : MonoBehaviour
 
         // Look around vertically
         lookRotation.y -= input.y;
-
+        
         lookRotation.y = Mathf.Clamp(lookRotation.y, -89f, 89f); // Clamp vertical rotation to prevent flipping
     }
 
@@ -123,22 +128,25 @@ public class CameraBehavior : MonoBehaviour
     void SwitchCameraMode(Mode newMode)
     {
         smoothing = true;
+        smoothTime = 0;
         mode = newMode;
         switch (mode)
         {
             case Mode.ThirdPerson:
-                offset = Vector3.zero;
                 distanceFromTarget = 7.5f;
                 offset = new Vector3(0, 1, 0);
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
 
             case Mode.FirstPerson:
                 offset = new Vector3(0, 0.3f, 0);
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
 
             case Mode.TopDown:
-                offset = new Vector3(0, 20, 0);
-                lookRotation = new Vector2(0, 89);
+                offset = new Vector3(0, 20, -9);
+                lookRotation = new Vector2(0, 60);
+                Cursor.lockState = CursorLockMode.None;
                 break;
         }
     }

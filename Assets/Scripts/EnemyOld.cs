@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Bullet;
+using static EnemyOld;
 
 public class EnemyOld : MonoBehaviour
 {
     [SerializeField] private Collider hitbox;
 
     public SplinePath spline; // the spline to drive along
+    public Dictionary<Effect, float> effects = new Dictionary<Effect, float>();
     public float t;
     public float speed;
+    public float currentSpeed;
 
     public float health;
     public int damage;
@@ -16,11 +20,20 @@ public class EnemyOld : MonoBehaviour
     public int gold;
     public string sound;
 
+    public enum Effect
+    {
+        none,
+        burn,
+        slow,
+    }
+
     private void Start()
     {
         hitbox = gameObject.GetComponent<Collider>();
         if (!hitbox)
             hitbox = gameObject.AddComponent<BoxCollider>();
+
+        currentSpeed = speed;
     }
 
     void Update()
@@ -31,6 +44,12 @@ public class EnemyOld : MonoBehaviour
             return;
         }
 
+        if (effects.Count > 0)
+        {
+            GetAffectedByEffect();
+        }
+
+
         /*if (Time.frameCount % 60 == 0)
         {
             if (Random.Range(0, 100) < 5)
@@ -39,7 +58,7 @@ public class EnemyOld : MonoBehaviour
 
         int index = spline.GetClosestPointIndex(transform.position);
         Vector3 point = spline.points[index + 1];
-        transform.position = Vector3.MoveTowards(transform.position, point, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, point, currentSpeed * Time.deltaTime);
 
         LookAtPath();
 
@@ -61,6 +80,45 @@ public class EnemyOld : MonoBehaviour
 
         //GameManager.gold += gold;
         Destroy(gameObject);
+    }
+
+    public void ApplyEffect(object[] arr)
+    {
+        Effect effect = (Effect)arr[0];
+        float duration = (float)arr[1];
+        // Apply the effect if it is not already, otherwise set the duration if it is lower than the effect's currect duration.
+        if (!effects.ContainsKey(effect))
+            effects.Add(effect, duration);
+        else if (effects[effect] < duration)
+            effects[effect] = duration;
+    }
+
+    void GetAffectedByEffect()
+    {
+        float deltatime = Time.deltaTime;
+        for (int i = 0; i < effects.Count; i++)
+        {
+            Effect effect = new List<Effect>(effects.Keys)[i];
+            float duration = effects[effect];
+            effects[effect] = duration - deltatime;
+            if (effects[effect] <= 0)
+            {
+                currentSpeed = speed;
+                effects.Remove(effect);
+                continue;
+            }
+
+            switch (effect)
+            {
+                case Effect.burn:
+                    TakeDamage(0.1f);
+                    break;
+
+                case Effect.slow:
+                    currentSpeed = speed * 0.5f;
+                    break;
+            }
+        }
     }
 
     void LookAtPath()
