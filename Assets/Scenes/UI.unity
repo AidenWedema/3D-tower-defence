@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 160261714}
   - component: {fileID: 160261713}
   - component: {fileID: 160261712}
+  - component: {fileID: 160261715}
   m_Layer: 5
   m_Name: levels
   m_TagString: Untagged
@@ -410,7 +411,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 160261713}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 160261715}
+        m_TargetAssemblyTypeName: Menuscript, Assembly-CSharp
+        m_MethodName: SwichScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level slecter
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &160261713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +462,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160261710}
   m_CullTransparentMesh: 1
+--- !u!114 &160261715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160261710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0f419460ff98e429d1aad07104ae87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &449064171
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,8 +688,8 @@ Transform:
   m_GameObject: {fileID: 639375953}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 15.4839, z: 496}
-  m_LocalScale: {x: 83.64847, y: 80.031296, z: 1}
+  m_LocalPosition: {x: -101.8394, y: 101.7827, z: 496}
+  m_LocalScale: {x: 148.38908, y: 131.26332, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1155,6 +1180,7 @@ GameObject:
   - component: {fileID: 1170326822}
   - component: {fileID: 1170326821}
   - component: {fileID: 1170326820}
+  - component: {fileID: 1170326823}
   m_Layer: 5
   m_Name: levels (2)
   m_TagString: Untagged
@@ -1225,7 +1251,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1170326821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1170326823}
+        m_TargetAssemblyTypeName: Menuscript, Assembly-CSharp
+        m_MethodName: SwichScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Story
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1170326821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1302,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170326818}
   m_CullTransparentMesh: 1
+--- !u!114 &1170326823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170326818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0f419460ff98e429d1aad07104ae87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1426835027
 GameObject:
   m_ObjectHideFlags: 0
