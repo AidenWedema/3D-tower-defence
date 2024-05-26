@@ -84,7 +84,7 @@ public class TowerBase : MonoBehaviour
         {
             Tower tower = towers[i].GetComponent<Tower>();
             Image button = new List<Image>(buttons.Keys)[i];
-            if (tower.stats.cost <= GameManager.gold)
+            if (tower.stats.cost <= GameManager.GetInstance().gold)
             {
                 button.color = Color.white;
                 buttons[button] = true;
@@ -103,7 +103,7 @@ public class TowerBase : MonoBehaviour
     public void BuildTower(GameObject prefab)
     {
         // subtract the cost of the tower from the players gold
-        GameManager.gold -= prefab.GetComponent<Tower>().stats.cost;
+        GameManager.GetInstance().gold -= prefab.GetComponent<Tower>().stats.cost;
         // clone the tower object and place it on the same position as the tower base
         Transform tower = Instantiate(prefab).transform;
         tower.SetPositionAndRotation(transform.position, transform.rotation);
