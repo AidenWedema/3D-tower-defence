@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &9084293711801984653
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6722085885383957590, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_Range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6722085885383957590, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.23001064
+      objectReference: {fileID: 0}
+    - target: {fileID: -6722085885383957590, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.44727358
+      objectReference: {fileID: 0}
+    - target: {fileID: -6722085885383957590, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: -6722085885383957590, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6722085885383957590, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_Intensity
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -447275898630060098, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -447275898630060098, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -447275898630060098, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      propertyPath: m_Name
+      value: Inferno
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1903897330974778993}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6369691888078702517}
+  m_SourcePrefab: {fileID: 100100000, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+--- !u!1 &8273267348703058908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c26f04fc7a360f14eaedaae10cf7a48c, type: 3}
+  m_PrefabInstance: {fileID: 9084293711801984653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1903897330974778993
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273267348703058908}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.591404, y: 5.8485727, z: 1.6034622}
+  m_Center: {x: 0.12668037, y: 2.4242864, z: 0.0076942444}
+--- !u!114 &6369691888078702517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273267348703058908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a4f28e0398bd64c878d775b6d59d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  buildList: {fileID: 0}
+  towers: []
+  stats:
+    name: Inferno
+    range: 10
+    reload: 0
+    cost: 500
+    damage: 1
+    timer: 0
+  bulletStats:
+    prefab: {fileID: 9211535523709396534, guid: 89367be123aa9ad48b04bfc0ebcaf4bb, type: 3}
+    size: {x: 0.1, y: 0.1, z: 0.1}
+    shootposition: {x: 0, y: 5, z: 0}
+    effect: 0
+    effectDuration: 0
+    damage: 0
+    speed: 0
+    amount: 0
+    spread: 0
+    acuracy: 0
+    delay: 0
+    useGravity: 0
+  target: {fileID: 0}
+  targets: []
+  active: 0

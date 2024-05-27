@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1120865074518172990
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      propertyPath: m_Name
+      value: Big Cannon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8960194195858554943}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 827260287864182233}
+  m_SourcePrefab: {fileID: 100100000, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+--- !u!1 &238537988328462447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fcc187be10b1ee4da25967fcbe36880, type: 3}
+  m_PrefabInstance: {fileID: 1120865074518172990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8960194195858554943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238537988328462447}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &827260287864182233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238537988328462447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a4f28e0398bd64c878d775b6d59d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  buildList: {fileID: 0}
+  towers: []
+  stats:
+    name: Big Cannon
+    range: 10
+    reload: 4
+    cost: 400
+    damage: 20
+    timer: 0
+  bulletStats:
+    prefab: {fileID: 9211535523709396534, guid: 89367be123aa9ad48b04bfc0ebcaf4bb, type: 3}
+    size: {x: 0.1, y: 0.1, z: 0.1}
+    shootposition: {x: -2, y: 0.75, z: 3}
+    effect: 0
+    effectDuration: 0
+    damage: 0
+    speed: 0
+    amount: 0
+    spread: 0
+    acuracy: 0
+    delay: 0
+    useGravity: 0
+  target: {fileID: 0}
+  targets: []
+  active: 0
