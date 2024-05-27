@@ -7,11 +7,13 @@ public class GameManager
     public bool paused;
     public int gold;
     public int wave;
+    public int hp;
 
     private GameManager()
     {
         paused = false;
         gold = 500;
+        hp = 100;
         wave = 0;
     }
 
