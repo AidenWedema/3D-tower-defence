@@ -118,6 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f007e702da3ed44a8ce6657c87d30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    name: TowerBase
+    range: 0
+    reload: 0
+    cost: 0
+    damage: 0
+    timer: 0
   player: {fileID: 0}
   buildList: {fileID: 0}
   towers: []

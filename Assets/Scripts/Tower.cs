@@ -5,22 +5,10 @@ using UnityEngine.UI;
 
 public class Tower : TowerBase
 {
-    public Stats stats;
     public BulletStats bulletStats;
     public Transform target;
     public List<Transform> targets = new List<Transform>();
     public bool active;
-
-    [Serializable]
-    public class Stats
-    {
-        public string name; // name of the tower
-        public float range; // range from the tower center
-        public float reload; // time it take to reload after shooting
-        public int cost; // amount of gold needed to build this tower
-        public int damage; // amount of damage a bullet does
-        public float timer; // time left until shooting again
-    }
 
     [Serializable]
     public class BulletStats
@@ -124,42 +112,9 @@ public class Tower : TowerBase
         Vector3 TargetMove()
         {
             int index = enemy.spline.GetClosestPointIndex(transform.position);
-            Vector3 point = enemy.spline.points[index + (int)time];
+            Vector3 point = enemy.spline.points[Mathf.Min(index + (int)time, enemy.spline.points.Count - 1)];
             return Vector3.MoveTowards(target.position, point, enemy.currentSpeed * Time.deltaTime * time);
         }
-    }
-
-    private void MakeBuildList()
-    {
-        TextAsset file = Resources.Load<TextAsset>($"Tower upgrades");
-        // get all lines from the file
-        string[] lines = file.text.ToLower().Split("\n");
-        string[] upgrades = { "TowerBase" };
-        foreach (string line in lines)
-        {
-            string[] tower = line.Split(": ");
-            if (tower[0] == stats.name)
-            {
-                upgrades = tower[1].Split(", ");
-            }
-        }
-
-        buildList = new GameObject(gameObject.name).transform;
-        buildList.transform.parent = GameObject.Find("WorldCanvas").transform;
-        buildList.position = transform.position + Vector3.up * 2;
-        for(int i = 0; i < upgrades.Length; i++)
-        {
-            string upgrade = upgrades[i];
-            GameObject prefab = Resources.Load<GameObject>($"Prefabs/Towers/{upgrade}");
-            Transform button = Instantiate(Resources.Load<GameObject>("Prefabs/TowerButton")).transform;
-            button.SetParent(buildList, false);
-            button.localPosition = i * Vector3.right - upgrades.Length / 2 * Vector3.right;
-
-            towers.Add(prefab);
-            buttons.Add(button.GetComponent<Image>(), false);
-        }
-
-        buildList.gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos()

@@ -101,6 +101,7 @@ public class Spawner : MonoBehaviour
 
             // wait for all enemies to die, then end the stage
             case "end":
+                end = true;
                 break;
 
             // default, throws error

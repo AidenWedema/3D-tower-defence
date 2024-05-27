@@ -20,7 +20,7 @@ public class UI : MonoBehaviour
 
     void LateUpdate()
     {
-        t += Time.deltaTime;
+        t += Time.deltaTime * 2;
         HP_text.text = $"{gameManager.hp}";
         Gold_text.text = $"{gameManager.gold}";
         Wave_text.text = $"{gameManager.wave}";
