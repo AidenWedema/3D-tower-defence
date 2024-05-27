@@ -25,18 +25,18 @@ public class Tower : TowerBase
     [Serializable]
     public class BulletStats
     {
-        public GameObject prefab;
-        public Vector3 size;
-        public Vector3 shootposition;
-        public Bullet.Effect effect;
-        public float effectDuration;
-        public float damage;
-        public float speed;
-        public int amount;
-        public float spread;
-        public float acuracy;
-        public float delay;
-        public bool useGravity;
+        public GameObject prefab; // the bullet to load
+        public Vector3 size; // the size of the bullet
+        public Vector3 shootposition; // an offset position from which the bullet will be shot
+        public Bullet.Effect effect; // the effect the bullet gives
+        public float effectDuration; // the time the effect takes
+        public float damage; // the damage the bullet does
+        public float speed; // the speed at which the bullet travvels
+        public int amount; // amount of bullets to shoot
+        public float spread; // the spread of bullets
+        public float acuracy; // the acuracy of the bullets
+        public float delay; // the delay between bullets shot
+        public bool useGravity; // should the bullet use gravity
     }
 
     void Start()
@@ -160,11 +160,6 @@ public class Tower : TowerBase
         }
 
         buildList.gameObject.SetActive(false);
-    }
-
-    public void Build(Transform towerbase)
-    {
-
     }
 
     private void OnDrawGizmos()
