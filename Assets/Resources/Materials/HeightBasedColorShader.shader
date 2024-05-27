@@ -45,6 +45,22 @@ Shader "Custom/HeightBasedColorShader"
             float3 worldPos;
         };
 
+        bool Around(float value, float threshold, float maxDifference)
+        {
+            float maxValue = threshold + maxDifference;
+            float minValue = threshold - maxDifference;
+            return (value < maxValue && value > minValue);
+        }
+
+        float GradientTime(float value, float threshold, float maxDifference)
+        {
+            return 0.5;
+            float minValue = threshold - maxDifference;
+            float difference = value - minValue;
+            float avarage = (value + minValue) / 2;
+            return difference / avarage;
+        }
+
         void surf (Input IN, inout SurfaceOutput o)
         {
             fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
@@ -74,32 +90,25 @@ Shader "Custom/HeightBasedColorShader"
 
             if (Around(height, _Threshold1, _GradientThreshold1))
             {
-                t = height - _GradientThreshold1;
-                o.Albedo = lerp(_Color1, _Color2, t).rgb;
+                t = GradientTime(height, _Threshold1, _GradientThreshold1);
+                o.Albedo = lerp(_Color1, _Color2, t);
             }
             if (Around(height, _Threshold2, _GradientThreshold2))
             {
-                t = height - _GradientThreshold2;
-                o.Albedo = lerp(_Color2, _Color3, t).rgb;
+                t = GradientTime(height, _Threshold1, _GradientThreshold2);
+                o.Albedo = lerp(_Color2, _Color3, t);
             }
             if (Around(height, _Threshold3, _GradientThreshold3))
             {
-                t = height - _GradientThreshold3;
-                o.Albedo = lerp(_Color3, _Color4, t).rgb;
+                t = GradientTime(height, _Threshold1, _GradientThreshold3);
+                o.Albedo = lerp(_Color3, _Color4, t);
             }
             if (Around(height, _Threshold4, _GradientThreshold4))
             {
-                t = height - _GradientThreshold4;
-                o.Albedo = lerp(_Color4, _Color5, t).rgb;
+                t = GradientTime(height, _Threshold1, _GradientThreshold4);
+                o.Albedo = lerp(_Color4, _Color5, t);
             }
             o.Alpha = c.a;
-        }
-
-        bool Around(float value, float threshold, float maxDifferance)
-        {
-            maxValue = threshold + maxDifferance;
-            minValue = threshold - maxDifferance;
-            return (value < maxDifferance && value >minValue);
         }
 
         ENDCG

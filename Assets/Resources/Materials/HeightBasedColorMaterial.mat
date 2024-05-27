@@ -70,9 +70,9 @@ Material:
     - _GlossyReflections: 1
     - _GradientSpeed: 0.66
     - _GradientThreshold: 0.1
-    - _GradientThreshold1: 1
-    - _GradientThreshold2: 1
-    - _GradientThreshold3: 1
+    - _GradientThreshold1: 0.01
+    - _GradientThreshold2: 2.49
+    - _GradientThreshold3: 2.03
     - _GradientThreshold4: 1
     - _MaxHeight: 0
     - _Metallic: 0
@@ -84,10 +84,10 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Threshold1: 1.5
-    - _Threshold2: 10
-    - _Threshold3: 50
-    - _Threshold4: 100
+    - _Threshold1: 4.9
+    - _Threshold2: 50
+    - _Threshold3: 150
+    - _Threshold4: 200
     - _ThresholdCount: 7.1
     - _Thresholds: 3.49
     - _UVSec: 0
@@ -97,8 +97,8 @@ Material:
     - _Color1: {r: 0.8, g: 0.7647059, b: 0.37254903, a: 1}
     - _Color2: {r: 0.06666667, g: 0.5568628, b: 0, a: 1}
     - _Color3: {r: 0.735849, g: 0.735849, b: 0.690032, a: 1}
-    - _Color4: {r: 0, g: 0, b: 0, a: 1}
-    - _Color5: {r: 0, g: 0.26017332, b: 1, a: 1}
+    - _Color4: {r: 1, g: 0, b: 0, a: 1}
+    - _Color5: {r: 0, g: 0, b: 1, a: 1}
     - _Colors: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighColor: {r: 0.06666667, g: 0.5568628, b: 0, a: 1}

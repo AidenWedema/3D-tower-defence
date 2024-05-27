@@ -145,11 +145,11 @@ public class SplinePath : MonoBehaviour
     {
         DrawPath();
         return;
-        Gizmos.color = Color.green;
+        /*Gizmos.color = Color.green;
         foreach (Vector3 point in points)
         {
             Gizmos.DrawSphere(point, 0.05f);
-        }
+        }*/
     }
 
     private void DrawPath()

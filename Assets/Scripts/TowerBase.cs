@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,34 +9,47 @@ public class TowerBase : MonoBehaviour
     public Transform buildList;
     public List<GameObject> towers = new List<GameObject>();
     public Dictionary<Image, bool> buttons = new Dictionary<Image, bool>();
-    private Camera cam;
+    protected Camera cam;
+    private GameManager gameManager;
 
     void Start()
+    {
+        MakeBuildList();
+
+        player = GameObject.FindWithTag("Player").transform;
+        gameObject.layer = LayerMask.NameToLayer("Tower");
+        cam = Camera.main;
+        gameManager = GameManager.GetInstance();
+    }
+
+    void FixedUpdate()
+    {
+        ManageBuildList();
+    }
+
+    private void MakeBuildList()
     {
         buildList = new GameObject(gameObject.name).transform;
         buildList.transform.parent = GameObject.Find("WorldCanvas").transform;
         buildList.position = transform.position + Vector3.up * 2;
-        GameObject[] prefabs = Resources.LoadAll<GameObject>("Prefabs/Towers");
-        for (int i = 0; i < prefabs.Length; i++)
+        List<GameObject> prefabs = Resources.LoadAll<GameObject>("Prefabs/Towers").ToList();
+        prefabs.Remove(Resources.Load<GameObject>("Prefabs/Towers/TowerBase"));
+        for (int i = 0; i < prefabs.Count; i++)
         {
             GameObject prefab = prefabs[i];
             //Tower tower = prefab.GetComponent<Tower>();
             Transform button = Instantiate(Resources.Load<GameObject>("Prefabs/TowerButton")).transform;
-            button.parent = buildList;
-            button.localPosition = i * Vector3.right - prefabs.Length / 2 * Vector3.right;
+            button.SetParent(buildList, false);
+            button.localPosition = i * Vector3.right - prefabs.Count / 2 * Vector3.right;
 
             towers.Add(prefab);
             buttons.Add(button.GetComponent<Image>(), false);
         }
 
-        player = GameObject.FindWithTag("Player").transform;
-        gameObject.layer = LayerMask.NameToLayer("Tower");
-        cam = Camera.main;
-
         buildList.gameObject.SetActive(false);
     }
 
-    void FixedUpdate()
+    protected void ManageBuildList()
     {
         // Check if the player is close enough
         if (Vector3.Distance(transform.position, player.position) > 2)
@@ -56,7 +70,6 @@ public class TowerBase : MonoBehaviour
         foreach (RaycastHit hit in hits)
         {
             Transform hittransform = hit.collider.transform;
-            Debug.Log(hittransform.name);
             if (transform == hittransform)
             {
                 SetBuildableTowers();
@@ -77,14 +90,14 @@ public class TowerBase : MonoBehaviour
         buildList.gameObject.SetActive(false);
     }
 
-    void SetBuildableTowers()
+    protected void SetBuildableTowers()
     {
         // Loop through every tower to check if the player has enough gold to build it
         for (int i = 0; i < towers.Count; i++)
         {
             Tower tower = towers[i].GetComponent<Tower>();
             Image button = new List<Image>(buttons.Keys)[i];
-            if (tower.stats.cost <= GameManager.gold)
+            if (tower.stats.cost <= gameManager.gold)
             {
                 button.color = Color.white;
                 buttons[button] = true;
@@ -95,7 +108,7 @@ public class TowerBase : MonoBehaviour
         }
     }
 
-    void RotateButonsTowardsCamera()
+    protected void RotateButonsTowardsCamera()
     {
         buildList.rotation = Quaternion.Euler(cam.transform.eulerAngles);
     }
@@ -103,7 +116,7 @@ public class TowerBase : MonoBehaviour
     public void BuildTower(GameObject prefab)
     {
         // subtract the cost of the tower from the players gold
-        GameManager.gold -= prefab.GetComponent<Tower>().stats.cost;
+        GameManager.GetInstance().gold -= prefab.GetComponent<Tower>().stats.cost;
         // clone the tower object and place it on the same position as the tower base
         Transform tower = Instantiate(prefab).transform;
         tower.SetPositionAndRotation(transform.position, transform.rotation);

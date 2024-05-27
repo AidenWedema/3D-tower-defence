@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.paused)
+        if (GameManager.GetInstance().paused)
             return;
 
         despawnTimer -= Time.deltaTime;

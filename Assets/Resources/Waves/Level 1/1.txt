@@ -1,0 +1,9 @@
+Wait: 3
+Spawn: test, 3, 1
+spawn: test, 10, 0,1
+wait: 2
+spawn: test, 3, 2
+wave
+wait: 5
+spawn: test, 100, 0
+sleep

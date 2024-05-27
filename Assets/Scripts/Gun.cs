@@ -109,7 +109,7 @@ public class Gun : MonoBehaviour
         Transform bullet = Instantiate(Resources.Load<GameObject>("Prefabs/bullet")).transform;
         Rigidbody body = bullet.GetOrAddComponent<Rigidbody>();
         SphereCollider hitbox = bullet.GetOrAddComponent<SphereCollider>();
-        Bullet script = bullet.AddComponent<Bullet>();
+        Bullet script = bullet.GetComponent<Bullet>();
         bullet.position = transform.position;
         bullet.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
         script.effect = Bullet.Effect.slow;

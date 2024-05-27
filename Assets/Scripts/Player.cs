@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float jumpForce = 8;
     public float stamina;
     public float maxStamina = 5;
-    private bool noRunningAlowed;
+    public bool noRunningAlowed;
     private Vector3 vel;
     [SerializeField]private float maxVelocityChange = 2;
 
@@ -29,15 +29,20 @@ public class Player : MonoBehaviour
     {
         bool grounded = Grounded();
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (grounded)
         {
-            if (grounded)
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                 Move();
             else
-                AirMove();
+            {
+                body.velocity = new Vector3(0, body.velocity.y, 0);
+                stamina = Mathf.Min(stamina + Time.deltaTime, maxStamina);
+                if (stamina >= maxStamina / 3)
+                    noRunningAlowed = false;
+            }
         }
         else
-            body.velocity = new Vector3(0, body.velocity.y, 0);
+            AirMove();
 
         // Jump if grounded and space is pressed
         if (Input.GetButtonDown("Jump") && grounded)
