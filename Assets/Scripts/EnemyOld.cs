@@ -29,6 +29,7 @@ public class EnemyOld : MonoBehaviour
 
     private void Start()
     {
+        gameObject.layer = LayerMask.NameToLayer("Enemy");
         hitbox = gameObject.GetComponent<Collider>();
         if (!hitbox)
             hitbox = gameObject.AddComponent<BoxCollider>();
