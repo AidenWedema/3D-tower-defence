@@ -99,7 +99,7 @@ MonoBehaviour:
     speed: 30
     amount: 1
     spread: 0
-    acuracy: 1
+    acuracy: 0
     delay: 0
     useGravity: 0
   target: {fileID: 0}

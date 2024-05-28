@@ -139,7 +139,6 @@ public class TowerBase : MonoBehaviour
 
     public void BuildTower(GameObject prefab)
     {
-        Debug.Log($"Building {prefab.name}");
         // clone the tower object and place it on the same position as the tower base
         Transform tower = Instantiate(prefab).transform;
         tower.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.eulerAngles + tower.eulerAngles));

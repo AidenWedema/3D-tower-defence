@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public List<Wave> waves = new List<Wave>(); // all waves
     public bool asleep; // waiting for the next wave
     public bool end; // try to end the level
-    private (string enemy, int amount, float time) spawnQue; // enemies to spawn
+    private (GameObject enemy, int amount, float time) spawnQue; // enemies to spawn
 
     [Serializable]
     public class Wave
@@ -86,7 +86,7 @@ public class Spawner : MonoBehaviour
 
             // spawn enemies, takes 3 arguments: Enemy name, Amount, Time between spawns
             case "spawn":
-                spawnQue = (args[0], int.Parse(args[1]), float.Parse(args[2]));
+                spawnQue = (Resources.Load<GameObject>($"Prefabs/Enemies/{args[0]}"), int.Parse(args[1]), float.Parse(args[2]));
                 break;
 
             // wait for amount of seconds, takes 1 argument: seconds to wait
@@ -114,11 +114,10 @@ public class Spawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        string name = spawnQue.enemy;
         timer = spawnQue.time;
         spawnQue.amount -= 1;
 
-        Transform enemy = Instantiate(Resources.Load<GameObject>($"Prefabs/Enemies/{name}")).transform;
+        Transform enemy = Instantiate(spawnQue.enemy).transform;
         enemy.parent = transform;
         enemy.localPosition = Vector3.zero;
         enemy.localEulerAngles = Vector3.zero;

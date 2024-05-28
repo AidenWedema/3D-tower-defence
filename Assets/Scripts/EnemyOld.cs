@@ -79,7 +79,7 @@ public class EnemyOld : MonoBehaviour
         if (health > 0)
             return;
 
-        //GameManager.gold += gold;
+        GameManager.GetInstance().gold += gold;
         Destroy(gameObject);
     }
 

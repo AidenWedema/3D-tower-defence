@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         hitbox = GetComponent<SphereCollider>();
+        gameObject.layer = LayerMask.NameToLayer("Bullet");
+        Physics.IgnoreLayerCollision(gameObject.layer, gameObject.layer, true);
     }
 
     void Update()
