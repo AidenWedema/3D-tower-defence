@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// singleton
 public class GameManager
 {
     public static GameManager instance;
