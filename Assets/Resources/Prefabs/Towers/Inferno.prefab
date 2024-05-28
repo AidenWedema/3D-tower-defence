@@ -137,27 +137,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a4f28e0398bd64c878d775b6d59d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  buildList: {fileID: 0}
-  towers: []
   stats:
     name: Inferno
     range: 10
     reload: 0
     cost: 500
-    damage: 1
     timer: 0
+  player: {fileID: 0}
+  buildList: {fileID: 0}
+  towers: []
   bulletStats:
     prefab: {fileID: 9211535523709396534, guid: 89367be123aa9ad48b04bfc0ebcaf4bb, type: 3}
     size: {x: 0.1, y: 0.1, z: 0.1}
     shootposition: {x: 0, y: 5, z: 0}
-    effect: 0
-    effectDuration: 0
-    damage: 0
-    speed: 0
-    amount: 0
+    effect: 1
+    effectDuration: 3
+    damage: 1
+    speed: 50
+    amount: 1
     spread: 0
-    acuracy: 0
+    acuracy: 1
     delay: 0
     useGravity: 0
   target: {fileID: 0}

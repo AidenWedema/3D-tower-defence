@@ -32,6 +32,8 @@ public class Tower : TowerBase
         player = GameObject.FindWithTag("Player").transform;
         gameObject.layer = LayerMask.NameToLayer("Tower");
         cam = Camera.main;
+        gameManager = GameManager.GetInstance();
+        hitbox = gameObject.GetComponent<Collider>();
         MakeBuildList();
     }
 
@@ -77,12 +79,13 @@ public class Tower : TowerBase
         Rigidbody body = bullet.GetComponent<Rigidbody>();
         body.useGravity = bulletStats.useGravity;
         Bullet script = bullet.GetComponent<Bullet>();
-        bullet.position = transform.position + bulletStats.shootposition;
+        bullet.position = GetShootPosition();
         bullet.localScale = bulletStats.size;
         script.effect = bulletStats.effect;
         script.effectDuration = bulletStats.effectDuration;
         script.damage = bulletStats.damage;
-        script.shooter = transform.parent;
+        script.shooter = transform;
+        Physics.IgnoreCollision(hitbox, bullet.GetComponent<Collider>(), true);
 
         Vector3 direction = (PredictMovement() - bullet.position).normalized;
         direction += (UnityEngine.Random.insideUnitSphere * bulletStats.acuracy).normalized;
@@ -112,9 +115,15 @@ public class Tower : TowerBase
         Vector3 TargetMove()
         {
             int index = enemy.spline.GetClosestPointIndex(transform.position);
-            Vector3 point = enemy.spline.points[Mathf.Min(index + (int)time, enemy.spline.points.Count - 1)];
+            int i = Mathf.Min(index + (int)time, enemy.spline.points.Count - 1);
+            Vector3 point = enemy.spline.points[i];
             return Vector3.MoveTowards(target.position, point, enemy.currentSpeed * Time.deltaTime * time);
         }
+    }
+
+    Vector3 GetShootPosition()
+    {
+        return transform.TransformPoint(bulletStats.shootposition);
     }
 
     private void OnDrawGizmos()
@@ -122,7 +131,17 @@ public class Tower : TowerBase
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, stats.range);
 
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(GetShootPosition(), 0.1f);
+
+        if (!target)
+            return;
+
+        Vector3 point = PredictMovement();
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(PredictMovement(), 0.1f);
+        Gizmos.DrawSphere(point, 0.1f);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(GetShootPosition(), point);
     }
 }
