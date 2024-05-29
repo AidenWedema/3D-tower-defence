@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Tower : TowerBase
 {
+    [SerializeField] private AudioSource audioSource;
     public BulletStats bulletStats;
     public Transform target;
     public List<Transform> targets = new List<Transform>();
@@ -34,6 +34,7 @@ public class Tower : TowerBase
         cam = Camera.main;
         gameManager = GameManager.GetInstance();
         hitbox = gameObject.GetComponent<Collider>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         MakeBuildList();
     }
 
@@ -74,6 +75,8 @@ public class Tower : TowerBase
     void Shoot()
     {
         stats.timer = stats.reload;
+        if (!audioSource.isPlaying)
+            audioSource.Play();
 
         Transform bullet = Instantiate(bulletStats.prefab).transform;
         Rigidbody body = bullet.GetComponent<Rigidbody>();
@@ -115,9 +118,18 @@ public class Tower : TowerBase
         Vector3 TargetMove()
         {
             int index = enemy.spline.GetClosestPointIndex(transform.position);
-            int i = Mathf.Min(index + (int)time, enemy.spline.points.Count - 1);
-            Vector3 point = enemy.spline.points[i];
-            return Vector3.MoveTowards(target.position, point, enemy.currentSpeed * Time.deltaTime * time);
+            try
+            {
+                int i = Mathf.Min(index + (int)time, enemy.spline.points.Count - 1);
+                Vector3 point = enemy.spline.points[i];
+                return Vector3.MoveTowards(target.position, point, enemy.currentSpeed * Time.deltaTime * time);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"{e}\ntime:{time}, index:{index}\nProbably a devide by 0 error on with bulletStats.speed...");
+                Vector3 point = enemy.spline.points[index + 5];
+                return Vector3.MoveTowards(target.position, point, enemy.currentSpeed * Time.deltaTime * time);
+            }
         }
     }
 

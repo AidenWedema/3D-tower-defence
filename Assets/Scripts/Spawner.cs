@@ -123,7 +123,7 @@ public class Spawner : MonoBehaviour
         enemy.localEulerAngles = Vector3.zero;
         EnemyOld script = enemy.GetComponent<EnemyOld>();
         script.spline = path;
-        script.sound = name;
+        script.soundFolder = spawnQue.enemy.name;
     }
 
     void LoadWaves()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     private Vector3 target;
-    //public AudioSource audioSource;
+    public AudioSource audioSource;
     public LayerMask mask;
     public float cooldown;
     public float maxCooldown;
@@ -24,12 +24,12 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        /*
-        audioSource = gameObject.GetOrAddComponent<AudioSource>();
-        audioSource.clip = Resources.Load<AudioClip>("Gunshot pewpew");
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (!audioSource)
+            audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = Resources.Load<AudioClip>("Audio/Gunshot pewpew");
         audioSource.volume = 0.5F;
         audioSource.spatialBlend = 0.5F;
-        */
     }
 
     private void Update()
@@ -104,7 +104,8 @@ public class Gun : MonoBehaviour
 
     void MakeBullet()
     {
-        //audioSource.Play();
+        if (!audioSource.isPlaying)
+            audioSource.Play();
 
         Transform bullet = Instantiate(Resources.Load<GameObject>("Prefabs/bullet")).transform;
         Rigidbody body = bullet.GetOrAddComponent<Rigidbody>();

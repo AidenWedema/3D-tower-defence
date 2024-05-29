@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Bullet;
-using static EnemyOld;
 
 public class EnemyOld : MonoBehaviour
 {
     [SerializeField] private Collider hitbox;
+    [SerializeField] private AudioSource audioSource;
 
     public SplinePath spline; // the spline to drive along
     public Dictionary<Effect, float> effects = new Dictionary<Effect, float>();
     public float t;
     public float speed;
     public float currentSpeed;
+    public int audioChance;
 
+    public string soundFolder;
     public float health;
     public int damage;
     public float timer;
     public int gold;
-    public string sound;
+    public AudioClip[] sounds;
 
     public enum Effect
     {
@@ -31,8 +32,15 @@ public class EnemyOld : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Enemy");
         hitbox = gameObject.GetComponent<Collider>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         if (!hitbox)
             hitbox = gameObject.AddComponent<BoxCollider>();
+        if (!audioSource)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.spatialBlend = 1;
+        
+        sounds = Resources.LoadAll<AudioClip>($"Audio/Enemy soundeffects/{soundFolder}");
 
         currentSpeed = speed;
     }
@@ -50,12 +58,11 @@ public class EnemyOld : MonoBehaviour
             GetAffectedByEffect();
         }
 
-
-        /*if (Time.frameCount % 60 == 0)
+        if (Time.frameCount % 60 == 0 && !audioSource.isPlaying)
         {
-            if (Random.Range(0, 100) < 5)
-                GameManager.soundManager.PlayAudio(sound);
-        }*/
+            if (Random.Range(0, 100) < audioChance)
+                PlayAudio();
+        }
 
         int index = spline.GetClosestPointIndex(transform.position);
         Vector3 point = spline.points[index + 1];
@@ -143,6 +150,13 @@ public class EnemyOld : MonoBehaviour
         float angle = Vector3.SignedAngle(transform.forward, desiredForward, transform.up) / 180f;
 
         transform.Rotate(Vector3.up, angle);
+    }
+
+    void PlayAudio()
+    {
+        AudioClip sound = sounds[Random.Range(0, sounds.Length)];
+        audioSource.clip = sound;
+        audioSource.Play();
     }
 }
 
