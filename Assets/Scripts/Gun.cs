@@ -24,7 +24,9 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        audioSource = gameObject.GetOrAddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (!audioSource)
+            audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = Resources.Load<AudioClip>("Audio/Gunshot pewpew");
         audioSource.volume = 0.5F;
         audioSource.spatialBlend = 0.5F;
