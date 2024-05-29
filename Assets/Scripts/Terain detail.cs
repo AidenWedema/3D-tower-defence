@@ -4,10 +4,14 @@ public class Teraindetail : MonoBehaviour
 {
     private Collider hitbox;
     public Vector2 size = Vector2.one;
+    public bool moveToGround;
 
     void Start()
     {
         transform.localScale = Vector3.one * Random.Range(size.x, size.y);
+
+        if (!moveToGround)
+            return;
 
         hitbox = GetComponent<Collider>();
 
@@ -29,6 +33,8 @@ public class Teraindetail : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!moveToGround)
+            return;
         hitbox = GetComponent<Collider>();
         Gizmos.color = Color.green;
         if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hit))
