@@ -14,6 +14,7 @@ public class EnemyOld : MonoBehaviour
     public float currentSpeed;
     public int audioChance;
 
+    public string soundFolder;
     public float health;
     public int damage;
     public float timer;
@@ -36,8 +37,10 @@ public class EnemyOld : MonoBehaviour
             hitbox = gameObject.AddComponent<BoxCollider>();
         if (!audioSource)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.spatialBlend = 1;
         
-        sounds = Resources.LoadAll<AudioClip>($"Audio/Enemy soundeffects/{gameObject.name}");
+        sounds = Resources.LoadAll<AudioClip>($"Audio/Enemy soundeffects/{soundFolder}");
 
         currentSpeed = speed;
     }

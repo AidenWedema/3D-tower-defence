@@ -1,9 +1,9 @@
 Wait: 3
-Spawn: test, 3, 1
-spawn: test, 10, 0,1
+Spawn: kip, 3, 1
+spawn: kip, 10, 0,1
 wait: 2
-spawn: test, 3, 2
+spawn: kip, 3, 2
 wave
 wait: 5
-spawn: test, 100, 0
+spawn: kip, 100, 0
 sleep
