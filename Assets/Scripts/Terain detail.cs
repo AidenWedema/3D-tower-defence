@@ -3,13 +3,16 @@ using UnityEngine;
 public class Teraindetail : MonoBehaviour
 {
     private Collider hitbox;
+    public Vector2 size = Vector2.one;
 
     void Start()
     {
+        transform.localScale = Vector3.one * Random.Range(size.x, size.y);
+
         hitbox = GetComponent<Collider>();
 
         Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hit);
-        Vector3 position = hit.point + hitbox.bounds.extents.y * transform.up;
+        Vector3 position = hit.point + hitbox.bounds.extents.y * Vector3.up;
 
         Physics.Raycast(transform.position + hitbox.bounds.extents.x * Vector3.one, -Vector3.up, out RaycastHit hit1);
         Physics.Raycast(transform.position + hitbox.bounds.extents.y * Vector3.one, -Vector3.up, out RaycastHit hit2);
@@ -27,9 +30,8 @@ public class Teraindetail : MonoBehaviour
     private void OnDrawGizmos()
     {
         hitbox = GetComponent<Collider>();
-        Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hit);
-
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, hit.point);
+        if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hit))
+            Gizmos.DrawLine(transform.position, hit.point);
     }
 }
