@@ -24,7 +24,9 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        audioSource = gameObject.GetOrAddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (!audioSource)
+            audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = Resources.Load<AudioClip>("Audio/Gunshot pewpew");
         audioSource.volume = 0.5F;
         audioSource.spatialBlend = 0.5F;
@@ -102,8 +104,7 @@ public class Gun : MonoBehaviour
 
     void MakeBullet()
     {
-        if (!audioSource.isPlaying)
-            audioSource.Play();
+        audioSource.Play();
 
         Transform bullet = Instantiate(Resources.Load<GameObject>("Prefabs/bullet")).transform;
         Rigidbody body = bullet.GetOrAddComponent<Rigidbody>();

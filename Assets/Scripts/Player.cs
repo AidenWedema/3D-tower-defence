@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     public Transform cam;
     public Collider hitbox;
     public Rigidbody body;
