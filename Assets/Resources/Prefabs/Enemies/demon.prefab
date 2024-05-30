@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3989707229437800978}
   - component: {fileID: 7404239328675488627}
   m_Layer: 0
-  m_Name: kip
+  m_Name: demon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,12 +122,12 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   spline: {fileID: 0}
   t: 0
-  speed: 3
+  speed: 5
   currentSpeed: 0
   audioChance: 1000
   soundFolder: 
-  health: 5
-  damage: 1
+  health: 100
+  damage: 15
   timer: 0
-  gold: 1
+  gold: 50
   sounds: []
