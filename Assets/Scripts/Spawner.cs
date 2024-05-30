@@ -156,5 +156,6 @@ public class Spawner : MonoBehaviour
                 newwave = new Wave();
             }
         }
+        waves.Add(newwave);
     }
 }

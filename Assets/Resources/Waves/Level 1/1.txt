@@ -1,9 +1,49 @@
-Wait: 3
-Spawn: kip, 3, 1
-spawn: kip, 10, 0,1
-wait: 2
-spawn: kip, 3, 2
 wave
+
+Wait: 30
+Spawn: kip, 5, 1
+wait: 3
+spawn: kip, 5, 0,5
+wait: 2
+spawn: kip, 10, 1
+wave
+
+Wait: 30
+spawn: kip, 5, 0,5
+spawn: kip, 10, 3
 wait: 5
-spawn: kip, 100, 0
-sleep
+spawn: kip, 10, 1
+spawn: kip, 5, 0,5
+wait: 5
+spawn: zombie, 1, 0
+wave
+
+Wait: 30
+spawn: kip, 10, 0,5
+wait: 3
+spawn: zombie, 3, 2
+spawn: kip, 5, 1
+wait: 3
+spawn: zombie, 5, 1
+wave
+
+Wait: 30
+spawn: zombie, 3, 1
+spawn: kip, 10, 1
+spawn: zombie, 3, 1
+wait: 3
+spawn: kip, 5, 1
+spawn: zombie, 5, 2
+wave
+
+Wait: 30
+spawn: zombie, 5, 1
+wait: 10
+spawn: skeleton, 3, 3
+spawn: kip, 10, 1
+wait: 5
+spawn: zombie, 10, 1
+wave
+
+Wait: 30
+end

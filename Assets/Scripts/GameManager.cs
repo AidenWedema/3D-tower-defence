@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // singleton
 public class GameManager
@@ -38,6 +39,6 @@ public class GameManager
 
     public void EndWave()
     {
-
+        SceneManager.LoadScene("UI");
     }
 }
