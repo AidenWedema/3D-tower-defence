@@ -144,7 +144,7 @@ MonoBehaviour:
     name: Inferno
     range: 10
     reload: 0
-    cost: 500
+    cost: 2500
     timer: 0
   player: {fileID: 0}
   buildList: {fileID: 0}

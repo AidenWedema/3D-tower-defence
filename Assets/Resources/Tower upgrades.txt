@@ -1,4 +1,4 @@
-TowerBase: Balista, Cannon, Inferno
+TowerBase: Balista, Cannon, Inferno, Catapult
 Balista: TowerBase
 Cannon: TowerBase, Double Cannon
 Double Cannon: TowerBase, Big Cannon

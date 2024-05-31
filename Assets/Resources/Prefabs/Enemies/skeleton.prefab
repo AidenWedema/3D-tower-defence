@@ -124,7 +124,7 @@ MonoBehaviour:
   t: 0
   speed: 3
   currentSpeed: 0
-  audioChance: 1000
+  audioChance: 5
   soundFolder: 
   health: 12
   damage: 3

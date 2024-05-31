@@ -106,9 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     name: Cannon
-    range: 10
-    reload: 6
-    cost: 150
+    range: 15
+    reload: 3
+    cost: 75
     timer: 0
   player: {fileID: 0}
   buildList: {fileID: 0}
