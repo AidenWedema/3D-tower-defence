@@ -1,6 +1,80 @@
+1
+sleep
+
+2
+sleep
+
+3
+sleep
+
+4
+sleep
+
+5
+Wait: 10
+spawn: orc, 1, 0,5
+spawn: kip, 20, 0,5
+spawn: orc, 1, 0
 wave
 
-Wait: 10
-Spawn: kip, 5, 1
+6
+sleep
 
-end
+7
+sleep
+
+8
+Wait: 10
+spawn: kip, 25, 0,5
+wait: 5
+spawn: zombie, 25, 0,5
+sleep
+
+9
+sleep
+
+10
+Wait: 10
+spawn: dwarf, 20, 3
+wave
+
+11
+Wait: 10
+spawn: demon, 10, 5
+wave
+
+12
+sleep
+
+13
+wait: 10
+spawn: dragon, 1, 0
+sleep
+
+14
+sleep
+
+15
+Wait: 10
+spawn: demon, 12, 2
+sleep
+
+16
+wait: 10
+spawn: skeleton, 20, 1
+sleep
+
+17
+sleep
+
+18
+sleep
+
+19
+wait: 5
+spawn: dragon, 1, 0
+wave
+
+20
+wait: 10
+spawn: demon, 25, 1
