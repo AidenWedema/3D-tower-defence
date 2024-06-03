@@ -29,6 +29,18 @@ public class GameManager
         return instance;
     }
 
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+            GameOver();
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Lose");
+    }
+
     public void NewWave()
     {
         wave++;
@@ -39,6 +51,6 @@ public class GameManager
 
     public void EndWave()
     {
-        SceneManager.LoadScene("UI");
+        SceneManager.LoadScene("Win");
     }
 }

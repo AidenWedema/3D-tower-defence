@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,9 +53,7 @@ public class EnemyOld : MonoBehaviour
         }
 
         if (effects.Count > 0)
-        {
             GetAffectedByEffect();
-        }
 
         if (Time.frameCount % 60 == 0 && !audioSource.isPlaying)
         {
@@ -74,8 +71,7 @@ public class EnemyOld : MonoBehaviour
 
         if (t == 1)
         {
-            //GameManager.TakeDamage(damage);
-            //GameManager.UpdateUI();
+            GameManager.GetInstance().TakeDamage(damage);
             Destroy(gameObject);
         }
     }
