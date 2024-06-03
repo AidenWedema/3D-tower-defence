@@ -86,7 +86,17 @@ public class Spawner : MonoBehaviour
 
             // spawn enemies, takes 3 arguments: Enemy name, Amount, Time between spawns
             case "spawn":
-                spawnQue = (Resources.Load<GameObject>($"Prefabs/Enemies/{args[0]}"), int.Parse(args[1]), float.Parse(args[2]));
+                try
+                {
+                    spawnQue = (Resources.Load<GameObject>($"Prefabs/Enemies/{args[0]}"), int.Parse(args[1]), float.Parse(args[2]));
+                }
+                catch
+                {
+                    string a = "";
+                    foreach (string arg in args)
+                        a += arg + ", ";
+                    Debug.LogError($"{funct}: {a}");
+                }
                 break;
 
             // wait for amount of seconds, takes 1 argument: seconds to wait

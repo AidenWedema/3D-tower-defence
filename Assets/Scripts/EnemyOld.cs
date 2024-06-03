@@ -154,6 +154,8 @@ public class EnemyOld : MonoBehaviour
 
     void PlayAudio()
     {
+        if (sounds.Length == 0)
+            return;
         AudioClip sound = sounds[Random.Range(0, sounds.Length)];
         audioSource.clip = sound;
         audioSource.Play();

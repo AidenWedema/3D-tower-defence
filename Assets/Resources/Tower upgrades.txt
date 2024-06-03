@@ -4,3 +4,4 @@ Cannon: TowerBase, Double Cannon
 Double Cannon: TowerBase, Big Cannon
 Big Cannon: TowerBase
 Inferno: TowerBase
+Catapult: TowerBase
