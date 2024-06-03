@@ -66,6 +66,14 @@ public class TowerBase : MonoBehaviour
             button.SetParent(buildList, false);
             button.localPosition = i * Vector3.right - upgrades.Length / 2 * Vector3.right;
 
+            if (upgrade != "TowerBase")
+            {
+                button.GetComponent<Image>().sprite = Resources.Load<Sprite>($"UI/{upgrade}");
+                button.GetChild(0).GetComponent<TMPro.TMP_Text>().text = prefab.GetComponent<Tower>().stats.cost.ToString();
+            }
+            else
+                button.GetChild(0).GetComponent<TMPro.TMP_Text>().text = "$$$";
+
             towers.Add(prefab);
             buttons.Add(button.GetComponent<Image>(), false);
         }
