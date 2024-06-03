@@ -1,0 +1,6 @@
+wave
+
+Wait: 10
+Spawn: kip, 5, 1
+
+end
