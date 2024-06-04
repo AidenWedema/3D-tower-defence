@@ -37,7 +37,8 @@ public class Bullet : MonoBehaviour
     {
         if (collision.transform != shooter)
         {
-            collision.transform.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+            if (damage > 0)
+                collision.transform.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
             if (effect != 0)
             {
                 object[] arr = new object[] { effect, effectDuration };

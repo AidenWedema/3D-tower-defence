@@ -1,10 +1,17 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyOld : MonoBehaviour
 {
     [SerializeField] private Collider hitbox;
     [SerializeField] private AudioSource audioSource;
+    private ParticleSystem hitParticles;
+    private ParticleSystem killParticles;
+    private ParticleSystem burnParticles;
+    private ParticleSystem slowParticles;
 
     public SplinePath spline; // the spline to drive along
     public Dictionary<Effect, float> effects = new Dictionary<Effect, float>();
@@ -42,6 +49,16 @@ public class EnemyOld : MonoBehaviour
         sounds = Resources.LoadAll<AudioClip>($"Audio/Enemy soundeffects/{soundFolder}");
 
         currentSpeed = speed;
+
+        hitParticles = Instantiate(Resources.Load<GameObject>("Effects/hit"), transform).GetComponent<ParticleSystem>();
+        killParticles = Instantiate(Resources.Load<GameObject>("Effects/kill"), transform).GetComponent<ParticleSystem>();
+        burnParticles = Instantiate(Resources.Load<GameObject>("Effects/burn"), transform).GetComponent<ParticleSystem>();
+        slowParticles = Instantiate(Resources.Load<GameObject>("Effects/slow"), transform).GetComponent<ParticleSystem>();
+
+        hitParticles.Stop();
+        killParticles.Stop();
+        burnParticles.Stop();
+        slowParticles.Stop();
     }
 
     void Update()
@@ -79,10 +96,22 @@ public class EnemyOld : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        hitParticles.Play();
         if (health > 0)
             return;
 
         GameManager.GetInstance().gold += gold;
+        StartCoroutine(Die());
+    }
+
+    private IEnumerator Die()
+    {
+        killParticles.Play();
+        while (killParticles.isPlaying)
+        {
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 
@@ -92,7 +121,13 @@ public class EnemyOld : MonoBehaviour
         float duration = (float)arr[1];
         // Apply the effect if it is not already, otherwise set the duration if it is lower than the effect's currect duration.
         if (!effects.ContainsKey(effect))
+        {
+            if (effect == Effect.burn)
+                burnParticles.Play();
+            if (effect == Effect.slow)
+                slowParticles.Play();
             effects.Add(effect, duration);
+        }
         else if (effects[effect] < duration)
             effects[effect] = duration;
     }
@@ -109,13 +144,21 @@ public class EnemyOld : MonoBehaviour
             {
                 currentSpeed = speed;
                 effects.Remove(effect);
+                if (!effects.ContainsKey(Effect.burn))
+                    burnParticles.Stop();
+                if (!effects.ContainsKey(Effect.slow))
+                    slowParticles.Stop();
                 continue;
             }
 
             switch (effect)
             {
                 case Effect.burn:
-                    TakeDamage(0.1f);
+                    health -= 0.1f;
+                    if (health > 0)
+                        return;
+                    GameManager.GetInstance().gold += gold;
+                    StartCoroutine(Die());
                     break;
 
                 case Effect.slow:
