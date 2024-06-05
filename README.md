@@ -21,4 +21,4 @@ Er is in elk normaal level iets verstopt, mischien is het wel belangerijk?
 
 *run*: **left shift**
 
-![Goopy](https://github.com/KindAiden/3D-tower-defence/assets/100278160/7295963e-8dbf-44c8-ab33-04d2cf927f4e)
+![slime](https://github.com/KindAiden/3D-tower-defence/assets/100278160/41d907aa-9934-492b-a543-86ce3004d385)
