@@ -10,9 +10,13 @@ je grbruikt je pistol om vijanden te vertragen.
 
 Er is in elk normaal level iets verstopt, mischien is het wel belangerijk?
 * * *
-##controlls:
-jump: space
-interact: left mouse
-shoot: right mouse
-walk: WASD or arrow keys
-run: left shift
+## controls:
+*jump*: **space**
+
+*interact*: **left mouse**
+
+*shoot*: **right mouse**
+
+*walk*: **WASD or arrow keys**
+
+*run*: **left shift**
