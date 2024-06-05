@@ -101,17 +101,8 @@ public class EnemyOld : MonoBehaviour
             return;
 
         GameManager.GetInstance().gold += gold;
-        StartCoroutine(Die());
-    }
-
-    private IEnumerator Die()
-    {
+        killParticles.transform.parent = null;
         killParticles.Play();
-        while (killParticles.isPlaying)
-        {
-            yield return null;
-        }
-
         Destroy(gameObject);
     }
 
@@ -158,7 +149,9 @@ public class EnemyOld : MonoBehaviour
                     if (health > 0)
                         return;
                     GameManager.GetInstance().gold += gold;
-                    StartCoroutine(Die());
+                    killParticles.transform.parent = null;
+                    killParticles.Play();
+                    Destroy(gameObject);
                     break;
 
                 case Effect.slow:

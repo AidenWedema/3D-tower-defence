@@ -1,0 +1,13 @@
+wave
+
+Wait: 40
+Spawn: kip, 5, 1
+wave
+
+Wait: 10
+spawn: kip, 10, 1
+wave
+
+Wait: 10
+spawn: kip, 10, 0,5
+end

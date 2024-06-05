@@ -38,6 +38,7 @@ public class GameManager
 
     public void GameOver()
     {
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("Lose");
     }
 
@@ -51,6 +52,7 @@ public class GameManager
 
     public void EndWave()
     {
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("Win");
     }
 }
