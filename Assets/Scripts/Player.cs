@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 // state pattern
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        SwitchSate(new IdleState());
+        SwitchSate(new IdleState(this));
         cam = Camera.main.transform;
         hitbox = GetComponent<Collider>();
         body = GetComponent<Rigidbody>();
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        state.Update(this);
+        state.Update();
     }
 
     public bool Grounded()
@@ -67,13 +68,15 @@ public class Player : MonoBehaviour
 
 public class IdleState : State
 {
-    public override void Update(Player player)
+    public IdleState(Player player) : base(player) { }
+
+    public override void Update()
     {
         bool grounded = player.Grounded();
 
         if (!grounded)
         {
-            player.SwitchSate(new FallingState());
+            player.SwitchSate(new FallingState(player));
             return;
         }
 
@@ -82,32 +85,34 @@ public class IdleState : State
             player.noRunningAlowed = false;
 
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            player.SwitchSate(new RunningState());
+            player.SwitchSate(new RunningState(player));
 
         if (Input.GetButtonDown("Jump"))
-            player.SwitchSate(new JumpingState());
+            player.SwitchSate(new JumpingState(player));
     }
 }
 
 public class RunningState : State
 {
-    public override void Update(Player player)
+    public RunningState(Player player) : base(player) { }
+
+    public override void Update()
     {
 
         if (!player.Grounded())
         {
-            player.SwitchSate(new FallingState());
+            player.SwitchSate(new FallingState(player));
             return;
         }
 
         if (!Input.anyKey)
         {
-            player.SwitchSate(new IdleState());
+            player.SwitchSate(new IdleState(player));
             return;
         }
 
         if (Input.GetButtonDown("Jump"))
-            player.SwitchSate(new JumpingState());
+            player.SwitchSate(new JumpingState(player));
 
         Vector3 move = player.GetMoveDirection();
         if (Input.GetKey(KeyCode.LeftShift) && player.stamina > 0 && !player.noRunningAlowed)
@@ -132,21 +137,25 @@ public class RunningState : State
 
 public class JumpingState : State
 {
-    public override void Update(Player player)
+    public JumpingState(Player player) : base(player) { }
+    public override void Update()
     {
         player.body.velocity = new Vector3(player.body.velocity.x, player.jumpForce, player.body.velocity.z);
         player.vel = player.body.velocity;
-        player.SwitchSate(new FallingState());
+        player.SwitchSate(new FallingState(player));
     }
 }
 
 public class FallingState : State
 {
-    public override void Update(Player player)
+
+    public FallingState(Player player) : base(player) { }
+
+    public override void Update()
     {
         if (player.Grounded())
         {
-            player.SwitchSate(new IdleState());
+            player.SwitchSate(new IdleState(player));
             return;
         }
 

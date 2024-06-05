@@ -1,4 +1,11 @@
 public abstract class State
 {
-    public abstract void Update(Player player);
+    protected Player player;
+
+    protected State(Player player)
+    {
+        this.player = player;
+    }
+
+    public abstract void Update();
 }
