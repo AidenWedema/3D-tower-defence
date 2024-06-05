@@ -20,3 +20,5 @@ Er is in elk normaal level iets verstopt, mischien is het wel belangerijk?
 *walk*: **WASD or arrow keys**
 
 *run*: **left shift**
+
+![Goopy](https://github.com/KindAiden/3D-tower-defence/assets/100278160/7295963e-8dbf-44c8-ab33-04d2cf927f4e)
