@@ -39,6 +39,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        GameManager.GetInstance().gold = 500;
         LoadWaves();
         wave = waves[0];
     }
