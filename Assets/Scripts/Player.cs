@@ -89,6 +89,8 @@ public class IdleState : State
 
         if (Input.GetButtonDown("Jump"))
             player.SwitchSate(new JumpingState(player));
+
+        player.body.velocity = Vector3.zero;
     }
 }
 
@@ -98,18 +100,11 @@ public class RunningState : State
 
     public override void Update()
     {
-
         if (!player.Grounded())
-        {
             player.SwitchSate(new FallingState(player));
-            return;
-        }
 
         if (!Input.anyKey)
-        {
             player.SwitchSate(new IdleState(player));
-            return;
-        }
 
         if (Input.GetButtonDown("Jump"))
             player.SwitchSate(new JumpingState(player));
@@ -148,16 +143,12 @@ public class JumpingState : State
 
 public class FallingState : State
 {
-
     public FallingState(Player player) : base(player) { }
 
     public override void Update()
     {
         if (player.Grounded())
-        {
             player.SwitchSate(new IdleState(player));
-            return;
-        }
 
         Vector3 move = player.GetMoveDirection() * player.moveSpeed;
 
@@ -166,5 +157,11 @@ public class FallingState : State
         move = player.vel + move;
 
         player.body.velocity = new Vector3(move.x, player.body.velocity.y, move.z);
+
+        if (Physics.CapsuleCast(player.hitbox.bounds.center + new Vector3(0, player.hitbox.bounds.extents.y, 0), player.hitbox.bounds.center - new Vector3(0, player.hitbox.bounds.extents.y, 0), 1, player.GetMoveDirection(), 0.5f))
+        {
+            player.body.velocity = new Vector3(0, player.body.velocity.y, 0);
+            player.vel = Vector3.zero;
+        }
     }
 }
