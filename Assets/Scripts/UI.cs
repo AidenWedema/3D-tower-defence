@@ -21,9 +21,9 @@ public class UI : MonoBehaviour
     void LateUpdate()
     {
         t += Time.deltaTime * 2;
-        HP_text.text = $"{gameManager.hp}";
-        Gold_text.text = $"{gameManager.gold}";
-        Wave_text.text = $"{gameManager.wave}";
+        HP_text.text = $"HP {gameManager.hp}";
+        Gold_text.text = $"${gameManager.gold}";
+        Wave_text.text = $"Wave {gameManager.wave}";
 
         if (player.stamina < player.maxStamina)
         {
