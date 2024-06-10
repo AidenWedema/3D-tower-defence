@@ -1971,6 +1971,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1590539137}
   m_SourcePrefab: {fileID: 100100000, guid: c44bd9bdc114d4a60932c0087d9d1732, type: 3}
+--- !u!1001 &326758226
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -246
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 262.29
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_Name
+      value: n64 logo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
 --- !u!1 &333008534
 GameObject:
   m_ObjectHideFlags: 0
@@ -7458,3 +7515,4 @@ SceneRoots:
   - {fileID: 94522731}
   - {fileID: 1065384290}
   - {fileID: 1581190032}
+  - {fileID: 326758226}
