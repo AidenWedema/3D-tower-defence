@@ -26526,6 +26526,63 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &2057729151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 83.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.66
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -86.57
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
+      propertyPath: m_Name
+      value: n64 logo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf4c2252b32c10849af83f029dfba2ec, type: 3}
 --- !u!33 &2058485954
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27728,6 +27785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dwarf_modell_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3788839891321723016, guid: 53025089141325944bb046604897e1f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4602530806072590898, guid: 53025089141325944bb046604897e1f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -27951,6 +28012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: inmp_new (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6587877634273761384, guid: 0d9a735b1cb041e49bf1a1e89bd96dbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27977,3 +28042,4 @@ SceneRoots:
   - {fileID: 1069445740}
   - {fileID: 4231290963195663759}
   - {fileID: 7448131589065187334}
+  - {fileID: 2057729151}
