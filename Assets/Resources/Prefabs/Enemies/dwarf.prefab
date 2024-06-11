@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320653487326020233, guid: a852b4566897add42ab4758b8517e801, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 320653487326020233, guid: a852b4566897add42ab4758b8517e801, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 320653487326020233, guid: a852b4566897add42ab4758b8517e801, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50,7 +50,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1096872839643830323, guid: a852b4566897add42ab4758b8517e801, type: 3}
       propertyPath: m_Name
-      value: dwarf_modell_enemy Variant
+      value: dwarf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970266894566907020, guid: a852b4566897add42ab4758b8517e801, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970266894566907020, guid: a852b4566897add42ab4758b8517e801, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970266894566907020, guid: a852b4566897add42ab4758b8517e801, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970266894566907020, guid: a852b4566897add42ab4758b8517e801, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
