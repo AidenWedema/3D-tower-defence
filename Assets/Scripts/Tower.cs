@@ -9,6 +9,7 @@ public class Tower : TowerBase
     public Transform target;
     public List<Transform> targets = new List<Transform>();
     public bool active;
+    public Vector3 rotationOffset;
 
     [Serializable]
     public class BulletStats
@@ -45,11 +46,15 @@ public class Tower : TowerBase
 
         ManageBuildList();
 
+        if (!target)
+            FindTarget();
+        else
+            Aim();
+
         stats.timer -= Time.deltaTime;
         if (stats.timer > 0)
             return;
 
-        FindTarget();
         if (targets.Count > 0)
             Shoot();
     }
@@ -131,6 +136,12 @@ public class Tower : TowerBase
                 return Vector3.MoveTowards(target.position, point, enemy.currentSpeed * Time.deltaTime * time);
             }
         }
+    }
+
+    void Aim()
+    {
+        transform.LookAt(target.position);
+        transform.eulerAngles += rotationOffset;
     }
 
     Vector3 GetShootPosition()

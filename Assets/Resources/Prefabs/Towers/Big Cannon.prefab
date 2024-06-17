@@ -130,6 +130,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targets: []
   active: 0
+  rotationOffset: {x: 0, y: 90, z: 0}
 --- !u!82 &-3298295696230754786
 AudioSource:
   m_ObjectHideFlags: 0

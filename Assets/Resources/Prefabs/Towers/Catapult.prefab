@@ -150,10 +150,11 @@ MonoBehaviour:
     spread: 0
     acuracy: 0
     delay: 0
-    useGravity: 0
+    useGravity: 1
   target: {fileID: 0}
   targets: []
   active: 0
+  rotationOffset: {x: 0, y: -90, z: 0}
 --- !u!82 &5578288495532881617
 AudioSource:
   m_ObjectHideFlags: 0
