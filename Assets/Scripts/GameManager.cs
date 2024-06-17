@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,6 +50,9 @@ public class GameManager
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Spawner");
         foreach (GameObject obj in objects)
             obj.GetComponent<Spawner>().NextWave();
+
+        UI ui = GameObject.FindFirstObjectByType<UI>();
+        ui.NewWave();
     }
 
     public void EndWave()

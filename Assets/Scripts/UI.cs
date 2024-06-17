@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,5 +46,35 @@ public class UI : MonoBehaviour
             return;
         }
         Stamina_slider.gameObject.SetActive(false);
+    }
+
+    public void NewWave() 
+    {
+        StartCoroutine(NewWaveFlash());
+    }
+
+    IEnumerator NewWaveFlash()
+    {
+        Color32[] colorloop = { Color.white, Color.red, new(255, 165, 0, 255), Color.yellow, Color.green, Color.cyan, Color.blue, new(160, 32, 240, 255), Color.white };
+        int loops = 2;
+        int i = 0;
+        float t = 0;
+
+        while (loops > 0)
+        {
+            Wave_text.color = Color.Lerp(colorloop[i], colorloop[i + 1], t);
+            t += Time.deltaTime * 5;
+            if (t >= 1)
+            {
+                t = 0;
+                i++;
+                if (i == colorloop.Length - 1)
+                {
+                    i = 0;
+                    loops--;
+                }
+            }
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 }
