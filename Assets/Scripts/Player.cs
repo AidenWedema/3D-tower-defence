@@ -79,7 +79,10 @@ public class Player : MonoBehaviour
         move.z = Mathf.Clamp(move.z, -maxVelocityChange, maxVelocityChange);
         move = vel + move;
 
-        body.velocity = new Vector3(move.x, body.velocity.y, move.z);
+        if (!CheckWallCollision())
+            body.velocity = new Vector3(move.x, body.velocity.y, move.z);
+        else
+            body.velocity = new Vector3(0, body.velocity.y, 0);
     }
 
     public void Jump()
@@ -97,6 +100,26 @@ public class Player : MonoBehaviour
             if (hit.transform != transform)
             {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    bool CheckWallCollision()
+    {
+        // Check if the player is hitting a wall
+        Collider[] hits = Physics.OverlapBox(transform.position, hitbox.bounds.extents, transform.rotation, ~LayerMask.GetMask("Zone"));
+        foreach (Collider hit in hits)
+        {
+            if (hit.transform != transform)
+            {
+                Vector3 directionToCollider = hit.ClosestPoint(transform.position) - transform.position;
+                float angle = Vector3.Angle(directionToCollider, transform.forward);
+                Debug.Log($"{hit.transform.name}: {angle}");
+                if (angle > 5 && angle < 135) // Adjust angle to detect sides
+                {
+                    return true;
+                }
             }
         }
         return false;
