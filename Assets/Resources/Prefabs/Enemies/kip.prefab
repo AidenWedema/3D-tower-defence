@@ -82,37 +82,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fca50cbcbf9960046ba5d51227209251, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3120670256164917737}
+      addedObject: {fileID: -7475963559842051718}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fca50cbcbf9960046ba5d51227209251, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -7475963559842051718}
+      addedObject: {fileID: 149380066780219020}
   m_SourcePrefab: {fileID: 100100000, guid: fca50cbcbf9960046ba5d51227209251, type: 3}
 --- !u!1 &7055762887099849828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fca50cbcbf9960046ba5d51227209251, type: 3}
   m_PrefabInstance: {fileID: 7866226313130254645}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &3120670256164917737
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7055762887099849828}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7475963559842051718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,3 +117,26 @@ MonoBehaviour:
   timer: 0
   gold: 1
   sounds: []
+--- !u!136 &149380066780219020
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055762887099849828}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
