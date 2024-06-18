@@ -115,7 +115,7 @@ MonoBehaviour:
   health: 5
   damage: 1
   timer: 0
-  gold: 1
+  gold: 2
   sounds: []
 --- !u!136 &149380066780219020
 CapsuleCollider:

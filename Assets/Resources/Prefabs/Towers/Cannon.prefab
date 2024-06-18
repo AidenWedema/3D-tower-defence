@@ -108,7 +108,7 @@ MonoBehaviour:
     name: Cannon
     range: 15
     reload: 3
-    cost: 75
+    cost: 125
     timer: 0
   player: {fileID: 0}
   buildList: {fileID: 0}
@@ -120,13 +120,13 @@ MonoBehaviour:
     shootposition: {x: -2, y: 1, z: 0}
     effect: 0
     effectDuration: 0
-    damage: 10
+    damage: 15
     speed: 35
     amount: 1
     spread: 0
     acuracy: 0
     delay: 0
-    useGravity: 1
+    useGravity: 0
   target: {fileID: 0}
   targets: []
   active: 0

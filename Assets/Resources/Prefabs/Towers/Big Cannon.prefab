@@ -106,9 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     name: Big Cannon
-    range: 10
-    reload: 4
-    cost: 400
+    range: 15
+    reload: 3
+    cost: 500
     timer: 0
   player: {fileID: 0}
   buildList: {fileID: 0}
@@ -116,17 +116,17 @@ MonoBehaviour:
   audioSource: {fileID: -3298295696230754786}
   bulletStats:
     prefab: {fileID: 9211535523709396534, guid: 89367be123aa9ad48b04bfc0ebcaf4bb, type: 3}
-    size: {x: 0.1, y: 0.1, z: 0.1}
+    size: {x: 0.25, y: 0.25, z: 0.25}
     shootposition: {x: -2, y: 1, z: 0}
     effect: 0
     effectDuration: 0
-    damage: 20
+    damage: 40
     speed: 35
     amount: 1
     spread: 0
     acuracy: 0
     delay: 0
-    useGravity: 1
+    useGravity: 0
   target: {fileID: 0}
   targets: []
   active: 0

@@ -112,14 +112,14 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   spline: {fileID: 0}
   t: 0
-  speed: 3
+  speed: 4
   currentSpeed: 0
   audioChance: 5
   soundFolder: 
-  health: 12
+  health: 15
   damage: 3
   timer: 0
-  gold: 5
+  gold: 7
   sounds: []
 --- !u!136 &3517410496722998801
 CapsuleCollider:

@@ -132,7 +132,7 @@ MonoBehaviour:
     name: Catapult
     range: 20
     reload: 5
-    cost: 550
+    cost: 500
     timer: 0
   player: {fileID: 0}
   buildList: {fileID: 0}

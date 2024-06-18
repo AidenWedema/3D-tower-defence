@@ -131,9 +131,9 @@ MonoBehaviour:
   audioChance: 5
   soundFolder: 
   health: 300
-  damage: 500
+  damage: 50
   timer: 0
-  gold: 200
+  gold: 250
   sounds: []
 --- !u!65 &4941329949795554545
 BoxCollider:
