@@ -1,0 +1,29 @@
+wave
+
+Wait: 5
+Spawn: kip, 10, 0,5
+wave
+
+Wait: 5
+spawn: zombie, 5, 1
+wave
+
+Wait: 10
+spawn: skeleton, 5, 1
+wave
+
+Wait: 15
+spawn: dwarf, 5, 1
+wave
+
+Wait: 5
+spawn: orc, 5, 1
+wave
+
+Wait: 10
+spawn: demon, 5, 1
+wave
+
+Wait: 10
+spawn: dragon, 1, 1
+end

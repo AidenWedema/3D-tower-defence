@@ -13,8 +13,17 @@ public class Menuscript : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.Escape) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.Alpha3))
+        {
+            SwichScene("e3");
+        }
     }
 }
