@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/e3.unity
     guid: 204cffa091ea02c4faa4b91c192ab9ca
+  - enabled: 1
+    path: Assets/Scenes/Lore.unity
+    guid: b55db16dabe4d224d900a1e4c96ff57d
   m_configObjects: {}
